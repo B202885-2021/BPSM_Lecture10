@@ -1,0 +1,53 @@
+#!/usr/bin/python
+
+seq1 = "ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT"
+
+#print out the A and T content of the DNA sequence
+
+seq1A = seq1.count('A')/len(seq1)
+seq1T = seq1.count('T')/len(seq1)
+
+print("The proportion of A's in the sequence is ", seq1A, " and the proportion of T's in the sequence is ", seq1T)
+
+# We complement the DNA, so replace A with T, replace C with G and vice versa. 
+
+seq1comp1 = seq1.replace("A", "Q")
+seq1comp2 = seq1comp1.replace("T", "A")
+seq1comp3 = seq1comp2.replace("Q", "T")
+seq1comp4 = seq1comp3.replace("C", "H")
+seq1comp5 = seq1comp4.replace("G", "C")
+seq1comp6 = seq1comp5.replace("H", "G")
+
+# Question 3;
+
+seq2 = "ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"
+
+# 1) find the position of the motif in the sequence
+
+motif = "GAATTC"
+seq2.find(motif)
+
+# position of the cut is position of motif + 1
+
+len1 = seq2.find(motif) - 1
+
+len2 = len(seq2) - len1
+
+print("The first fragment is ", len1, " nucleotides long, while the second fragment is ", len2, " nucleotides long")
+
+# Ex 4) splicing out introns
+
+seq3 = "ATCGATCGATCGATCGACTGACTAGTCATAGCTATGCATGTAGCTACTCGATCGATCGATCGATCGATCGATCGATCGATCGATCATGCTATCATCGATCGATATCGATGCATCGACTACTAT"
+
+codon1 = seq3[0:62]
+codon2 = seq3[90:len(seq3)]
+
+coding = codon1+codon2
+
+perc = (len(coding)/len(seq3))*100
+
+# program that prints out coding portions in upper, introns in lower
+
+intron1 = seq3[62:90]
+
+print(codon1.upper()+intron1.lower()+codon2.upper())
